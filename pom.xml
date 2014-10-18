@@ -16,24 +16,16 @@
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>com.cedarsoft.serialization</groupId>
-      <artifactId>stax-mate</artifactId>
-    </dependency>
-
     <!--Stax parser-->
     <dependency>
       <groupId>org.codehaus.staxmate</groupId>
       <artifactId>staxmate</artifactId>
-      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.codehaus.woodstox</groupId>
       <artifactId>woodstox-core-asl</artifactId>
-      <optional>true</optional>
     </dependency>
 
-    <!--New javolution format (since 6.0.0)-->
     <dependency>
       <groupId>org.javolution</groupId>
       <artifactId>javolution-core-java</artifactId>
