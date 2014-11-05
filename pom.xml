@@ -17,6 +17,7 @@
 
   <modules>
     <module>data</module>
+    <module>runner</module>
 
     <module>jackson-mapper</module>
   </modules>
