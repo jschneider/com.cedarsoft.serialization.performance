@@ -17,6 +17,8 @@
 
   <modules>
     <module>data</module>
+
+    <module>jackson-mapper</module>
   </modules>
 
   <properties>
