@@ -1,7 +1,6 @@
 package com.cedarsoft.serialization.performance.small;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.collect.ImmutableList;
 
 import javax.annotation.Nonnull;
 import java.io.ByteArrayOutputStream;
@@ -13,10 +12,11 @@ import java.io.IOException;
 public class BookSerializerRunner extends AbstractBookSerializeRunner {
   public BookSerializerRunner() {
     super( ScenarioSize.SMALL, new Deserializer() {
+      private final ObjectMapper mapper = new ObjectMapper();
       @Nonnull
       @Override
-      public Book deserializeBook( @Nonnull byte[] serialized ) {
-        return new Book( "Design Patterns: Elements of Reusable Object-Oriented Software", ImmutableList.<String>of(), 12.0, Book.Rating.FOUR );
+      public Book deserializeBook( @Nonnull byte[] serialized ) throws IOException {
+        return mapper.readValue( serialized, Book.class );
       }
     } );
   }

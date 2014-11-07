@@ -57,9 +57,9 @@ public abstract class AbstractBookSerializeRunner extends AbstractRunner {
   }
 
   public enum ScenarioSize {
-    SMALL( 100000000 ),
-    MEDIUM( 100000000 * 10 ),
-    LARGE( 100000000 * 100 );
+    SMALL( 100000 ),
+    MEDIUM( 100000 * 10 ),
+    LARGE( 100000 * 100 );
     private final int count;
 
     ScenarioSize( int count ) {
