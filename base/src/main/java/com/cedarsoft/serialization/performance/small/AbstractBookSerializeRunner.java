@@ -4,6 +4,7 @@ import com.cedarsoft.serialization.performance.AbstractRunner;
 import com.google.common.collect.ImmutableList;
 
 import javax.annotation.Nonnull;
+import java.util.concurrent.Callable;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
@@ -11,12 +12,15 @@ import javax.annotation.Nonnull;
 public abstract class AbstractBookSerializeRunner extends AbstractRunner {
   @Nonnull
   private final ScenarioSize scenarioSize;
+  @Nonnull
+  private final Deserializer deserializer;
 
-  protected AbstractBookSerializeRunner( @Nonnull ScenarioSize scenarioSize ) {
+  protected AbstractBookSerializeRunner( @Nonnull ScenarioSize scenarioSize, @Nonnull Deserializer deserializer ) {
     this.scenarioSize = scenarioSize;
+    this.deserializer = deserializer;
   }
 
-  public void runDeserializationBenchmark() {
+  public void runDeserializationBenchmark() throws Exception {
     Book book = new Book( "Design Patterns: Elements of Reusable Object-Oriented Software",
                           ImmutableList.of( "Erich Gamma", "Richard Helm", "Ralph Johnson", "John Vlissides" ),
                           38.02, Book.Rating.FOUR );
@@ -24,12 +28,14 @@ public abstract class AbstractBookSerializeRunner extends AbstractRunner {
     byte[] serialized = serializeBook( book );
 
 
-    runBenchmark( () -> {
-      Book deserialized = deserializeBook( serialized );
+    Callable<Object> objectCallable = () -> {
+      Book deserialized = deserializer.deserializeBook( serialized );
       if ( !deserialized.getTitle().equals( book.getTitle() ) ) {
         throw new IllegalStateException( "Different title. Was <" + deserialized.getTitle() + "> but expected <" + book.getTitle() + ">" );
       }
-    }, scenarioSize.getCount() );
+      return null;
+    };
+    runBenchmark( objectCallable, scenarioSize.getCount() );
   }
 
   /**
@@ -38,20 +44,22 @@ public abstract class AbstractBookSerializeRunner extends AbstractRunner {
    * @param book the book that shall be serialized
    * @return the bytes
    */
-  protected abstract byte[] serializeBook( @Nonnull Book book );
+  protected abstract byte[] serializeBook( @Nonnull Book book ) throws Exception;
 
-  /**
-   * Deserializes the book
-   *
-   * @param serialized the serialized data
-   */
-  @Nonnull
-  protected abstract Book deserializeBook( @Nonnull byte[] serialized );
+  public interface Deserializer {
+    /**
+     * Deserializes the book
+     *
+     * @param serialized the serialized data
+     */
+    @Nonnull
+    Book deserializeBook( @Nonnull byte[] serialized ) throws Exception;
+  }
 
   public enum ScenarioSize {
-    SMALL( 10000 ),
-    MEDIUM( 10000 * 10 ),
-    LARGE( 10000 * 100 );
+    SMALL( 100000000 ),
+    MEDIUM( 100000000 * 10 ),
+    LARGE( 100000000 * 100 );
     private final int count;
 
     ScenarioSize( int count ) {
