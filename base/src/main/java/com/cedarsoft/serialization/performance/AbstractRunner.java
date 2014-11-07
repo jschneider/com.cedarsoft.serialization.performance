@@ -15,18 +15,16 @@ public class AbstractRunner {
 
   public Result runBenchmark( @Nonnull Callable<?> runnable, final int count ) throws Exception {
     //Warmup
-    runnable.call();
-    runnable.call();
-    runnable.call();
+    run( runnable, count );
+    run( runnable, count );
+    run( runnable, count );
 
     List<Long> times = new ArrayList<Long>();
 
     for ( int run = 0; run < 5; run++ ) {
       StopWatch stopWatch = new StopWatch();
       stopWatch.start();
-      for ( int i = 0; i < count; i++ ) {
-        runnable.call();
-      }
+      run( runnable, count );
       stopWatch.stop();
       times.add( stopWatch.getTime() );
     }
@@ -38,6 +36,12 @@ public class AbstractRunner {
     System.out.println( "-----------------------" );
 
     return result;
+  }
+
+  private void run( @Nonnull Callable<?> runnable, int count ) throws Exception {
+    for ( int i = 0; i < count; i++ ) {
+      runnable.call();
+    }
   }
 
 }
