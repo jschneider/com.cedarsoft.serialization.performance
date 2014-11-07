@@ -11,8 +11,10 @@ import java.util.List;
 public class Result {
   @Nonnull
   private final List<Long> times;
+  private final int count;
 
-  public Result( @Nonnull List<Long> times ) {
+  public Result( @Nonnull List<Long> times, int count ) {
+    this.count = count;
     this.times = ImmutableList.copyOf( times );
   }
 
@@ -27,7 +29,7 @@ public class Result {
     StringBuilder builder = new StringBuilder();
 
     for ( Long time : times ) {
-      builder.append( time ).append( " ms\n" );
+      builder.append( time ).append( " ms for " ).append( count ).append( "\n" );
     }
 
     return builder.toString();

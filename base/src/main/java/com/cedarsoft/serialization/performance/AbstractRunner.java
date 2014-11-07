@@ -31,7 +31,7 @@ public class AbstractRunner {
       times.add( stopWatch.getTime() );
     }
 
-    Result result = new Result( times );
+    Result result = new Result( times, count );
 
     System.out.println( "-----------------------" );
     System.out.println( result );
