@@ -11,10 +11,11 @@
   </parent>
 
   <groupId>com.cedarsoft.serialization.performance</groupId>
-  <artifactId>runner</artifactId>
-  <description>Performance Runner Classes</description>
+  <artifactId>base</artifactId>
+  <description>Base classes</description>
 
   <dependencies>
+
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
@@ -27,6 +28,7 @@
       <version>6.0.2</version>
       <scope>test</scope>
     </dependency>
+
 
   </dependencies>
 

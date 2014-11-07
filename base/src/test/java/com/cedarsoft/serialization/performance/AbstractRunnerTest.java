@@ -1,4 +1,4 @@
-package com.cedarsoft.serialization.performance.small;
+package com.cedarsoft.serialization.performance;
 
 import org.junit.*;
 

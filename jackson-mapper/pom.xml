@@ -14,4 +14,10 @@
   <artifactId>jackson-mapper</artifactId>
   <description>Implementation using Jackson Mapper</description>
 
+  <dependencies>
+    <dependency>
+      <groupId>com.cedarsoft.serialization.performance</groupId>
+      <artifactId>base</artifactId>
+    </dependency>
+  </dependencies>
 </project>

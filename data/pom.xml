@@ -13,4 +13,20 @@
   <groupId>com.cedarsoft.serialization.performance</groupId>
   <artifactId>data</artifactId>
 
+  <dependencies>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.3.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cedarsoft.commons</groupId>
+      <artifactId>test-utils</artifactId>
+      <version>6.0.2</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
 </project>

@@ -16,9 +16,7 @@
   <name>Serialization Performance Tests</name>
 
   <modules>
-    <module>data</module>
-    <module>runner</module>
-
+    <module>base</module>
     <module>jackson-mapper</module>
   </modules>
 
@@ -38,6 +36,17 @@
       <artifactId>guava</artifactId>
     </dependency>
   </dependencies>
+
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>com.cedarsoft.serialization.performance</groupId>
+        <artifactId>base</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
 
   <!--<dependencies>-->
