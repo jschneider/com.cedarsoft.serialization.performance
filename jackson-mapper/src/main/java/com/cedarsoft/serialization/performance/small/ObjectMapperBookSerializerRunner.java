@@ -9,8 +9,8 @@ import java.io.IOException;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class BookSerializerRunner extends AbstractBookSerializeRunner {
-  public BookSerializerRunner() {
+public class ObjectMapperBookSerializerRunner extends AbstractBookSerializeRunner {
+  public ObjectMapperBookSerializerRunner() {
     super( ScenarioSize.SMALL, new Deserializer() {
       private final ObjectMapper mapper = new ObjectMapper();
       @Nonnull
@@ -32,6 +32,6 @@ public class BookSerializerRunner extends AbstractBookSerializeRunner {
   }
 
   public static void main( String[] args ) throws Exception {
-    new BookSerializerRunner().runDeserializationBenchmark();
+    new ObjectMapperBookSerializerRunner().runDeserializationBenchmark();
   }
 }
