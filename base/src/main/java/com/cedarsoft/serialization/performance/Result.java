@@ -3,6 +3,7 @@ package com.cedarsoft.serialization.performance;
 import com.google.common.collect.ImmutableList;
 
 import javax.annotation.Nonnull;
+import java.text.NumberFormat;
 import java.util.List;
 
 /**
@@ -28,8 +29,9 @@ public class Result {
   public String toString() {
     StringBuilder builder = new StringBuilder();
 
+    NumberFormat numberInstance = NumberFormat.getNumberInstance();
     for ( Long time : times ) {
-      builder.append( time ).append( " ms for " ).append( count ).append( "\n" );
+      builder.append( time ).append( " ms for " ).append( numberInstance.format( count ) ).append( "\n" );
     }
 
     return builder.toString();
