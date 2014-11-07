@@ -31,7 +31,7 @@ public class Result {
 
     NumberFormat numberInstance = NumberFormat.getNumberInstance();
     for ( Long time : times ) {
-      builder.append( time ).append( " ms for " ).append( numberInstance.format( count ) ).append( "\n" );
+      builder.append( time ).append( " ms\t\t for " ).append( numberInstance.format( count ) ).append( "\t\t" ).append( numberInstance.format( 1000.0 * count / time ) ).append( " actions per second" ).append( "\n" );
     }
 
     return builder.toString();
