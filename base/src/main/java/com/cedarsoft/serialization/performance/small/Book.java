@@ -10,12 +10,15 @@ import java.util.List;
  */
 public class Book {
   @Nonnull
-  private final String title;
+  private String title;
   @Nonnull
-  private final List<String> authors;
-  private final double price;
+  private List<String> authors;
+  private double price;
   @Nonnull
-  private final Rating rating;
+  private Rating rating;
+
+  public Book() {
+  }
 
   public Book( @Nonnull String title, @Nonnull List<String> authors, double price, @Nonnull Rating rating ) {
     this.title = title;
