@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 public class ObjectMapperBookSerializerRunner extends AbstractBookSerializeRunner {
   public ObjectMapperBookSerializerRunner() {
-    super( ScenarioSize.SMALL, new Deserializer() {
+    super( ScenarioSize.MEDIUM, new Deserializer() {
       private final ObjectMapper mapper = new ObjectMapper();
       @Nonnull
       @Override
@@ -30,6 +30,9 @@ public class ObjectMapperBookSerializerRunner extends AbstractBookSerializeRunne
 
     return out.toByteArray();
   }
+
+  //{"title":"Design Patterns: Elements of Reusable Object-Oriented Software","authors":["Erich Gamma","Richard Helm","Ralph Johnson","John Vlissides"],"price":38.02,"rating":"FOUR"}
+
 
   public static void main( String[] args ) throws Exception {
     new ObjectMapperBookSerializerRunner().runDeserializationBenchmark();
