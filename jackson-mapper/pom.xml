@@ -11,22 +11,30 @@
   </parent>
 
   <groupId>com.cedarsoft.serialization.performance</groupId>
-  <artifactId>data</artifactId>
+  <artifactId>jackson-mapper</artifactId>
+  <description>Implementation using Jackson Mapper</description>
 
   <dependencies>
-
     <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
-      <version>3.3.2</version>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.4.2</version>
     </dependency>
 
     <dependency>
-      <groupId>com.cedarsoft.commons</groupId>
-      <artifactId>test-utils</artifactId>
-      <version>6.0.2</version>
-      <scope>test</scope>
+      <groupId>com.cedarsoft.serialization.performance</groupId>
+      <artifactId>base</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.easytesting</groupId>
+      <artifactId>fest-assert-core</artifactId>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 </project>
